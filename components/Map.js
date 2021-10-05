@@ -90,9 +90,7 @@ export default function Map() {
       </button>
       {showDocs && <Docs />}
     </div>
-  ) : (
-    <p>loading map</p>
-  );
+  ) : null;
 }
 
 // stílar

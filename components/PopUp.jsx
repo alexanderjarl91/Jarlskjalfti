@@ -4,11 +4,7 @@ import { AppContext } from '../context/context'
 import { formatDate, formatTime } from '../utils/datestuff'
 
 export default function PopUp() {
-    const {activeQuake} = useContext(AppContext)
-
-    
-
-
+    const {activeQuake, setActiveQuake} = useContext(AppContext)
 
 
     return (
@@ -29,7 +25,10 @@ export default function PopUp() {
                 </li>
                 <li className={styles.listItem}>
                     <img src="date_icon.svg" alt="" />
-                    <p>Dýpt: 0.6</p>
+                    <p>Dýpt: 0.6</p> 
+                    <button className={styles.close} onClick={() => {
+                        setActiveQuake()
+                    }}>close</button>
                 </li>
             </ul>
             

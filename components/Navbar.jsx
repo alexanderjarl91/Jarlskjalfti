@@ -14,7 +14,7 @@ export default function Navbar() {
                 setShowSettings(!showSettings)
             }}>
                 <img src="settings.svg" alt="" />
-            </button> : null  }
+            </button> : <img style={{opacity: 0.3}}src="settings.svg" alt="" />  }
             
             <Link href="/" >
                 <img src="logo.svg" alt="" style={{cursor: 'pointer'}}/>

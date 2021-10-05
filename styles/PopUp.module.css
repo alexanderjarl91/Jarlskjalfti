@@ -1,7 +1,7 @@
 .container {
   position: absolute;
   bottom: 0;
-  right: 0;
+  right: 5px;
   height: 220px;
   width: 100vw;
   max-width: 400px;
@@ -22,4 +22,15 @@
 
 .listItem > img {
   margin-right: 4px;
+}
+
+.close {
+  position: absolute;
+  right: 40px;
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+.close:hover {
+  opacity: 1;
 }

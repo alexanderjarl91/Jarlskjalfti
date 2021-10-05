@@ -5,14 +5,16 @@ import {
   Marker,
   Circle,
   InfoWindow,
+  Autocomplete,
 } from "@react-google-maps/api";
 import { AppContext } from "../context/context";
 import PopUp from "./PopUp";
+import Docs from "./Docs";
 
 const containerStyle = {
   width: "100vw",
-  height: "650px",
-  marginTop: "1rem",
+  height: "550px",
+  marginTop: "0rem",
 };
 
 const exampleMapStyles = [
@@ -197,7 +199,7 @@ const circleOptions = {
 };
 
 export default function Map() {
-  const { earthquakeData, activeQuake, setActiveQuake } =
+  const { earthquakeData, activeQuake, setActiveQuake, showDocs, setShowDocs } =
     useContext(AppContext);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -217,7 +219,14 @@ export default function Map() {
   }, []);
 
   return isLoaded && earthquakeData.length > 0 ? (
-    <>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign: "center",
+      }}
+    >
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={{ lat: 64.773887, lng: -18.824735 }}
@@ -258,7 +267,17 @@ export default function Map() {
         <></>
       </GoogleMap>
       {activeQuake && <PopUp title={activeQuake.humanReadableLocation} />}
-    </>
+
+      <button
+        style={{ marginTop: "2rem", fontWeight: "500" }}
+        onClick={() => {
+          setShowDocs(!showDocs);
+        }}
+      >
+        read me
+      </button>
+      {showDocs && <Docs />}
+    </div>
   ) : (
     <p>loading map</p>
   );

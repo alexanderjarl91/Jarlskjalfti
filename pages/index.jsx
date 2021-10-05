@@ -6,10 +6,13 @@ import { AppContext } from "../context/context";
 import Map from "../components/Map";
 import ListItem from "../components/ListItem";
 import ListComponent from "../components/ListComponent";
+import Loading from "../components/Loading";
 
 export default function Home() {
-  const { showSettings, sortSelection, fetchInterval, mapView } = useContext(AppContext);
-  return (
+  const { showSettings, sortSelection, fetchInterval, mapView, loadingData} = useContext(AppContext);
+  
+  
+  return !loadingData? (
     <div className={styles.container}>
       <Head>
         <title>Jarlskjálfti</title>
@@ -22,5 +25,5 @@ export default function Home() {
       {mapView? <Map /> : <ListComponent/>}
       </section>
     </div>
-  );
+  ) : <Loading/>
 }

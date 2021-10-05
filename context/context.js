@@ -5,12 +5,13 @@ export const AppContext = React.createContext({});
 
 export const AppContextProvider = ({ children }) => {
   const [showSettings, setShowSettings] = useState(false);
-  const [mapView, setMapView] = useState(false);
+  const [mapView, setMapView] = useState(true);
   const [earthquakeData, setEarthquakeData] = useState([]);
   const [fetchInterval, setFetchInterval] = useState(15000);
   const [sortSelection, setSortSelection] = useState("Dagsetning");
   const [activeQuake, setActiveQuake] = useState();
   const [loadingData, setLoadingData] = useState(true);
+  const [showDocs, setShowDocs] = useState(false);
   const fetchData = () => {
     fetch("https://apis.is/earthquake/is")
       .then((response) => response.json())
@@ -39,6 +40,7 @@ export const AppContextProvider = ({ children }) => {
     const sortedBySize = sortData(earthquakeData);
   }, [sortSelection]);
 
+  //
   useInterval(fetchData, fetchInterval);
 
   return (
@@ -55,6 +57,9 @@ export const AppContextProvider = ({ children }) => {
         setSortSelection,
         activeQuake,
         setActiveQuake,
+        loadingData,
+        showDocs,
+        setShowDocs,
       }}
     >
       {children}

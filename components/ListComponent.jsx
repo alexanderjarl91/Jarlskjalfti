@@ -6,11 +6,6 @@ import { AppContext } from '../context/context'
 export default function ListComponent() {
     const {earthquakeData, mapView, setMapView, setActiveQuake} = useContext(AppContext)
 
-    
-    useEffect(()=> {
-        console.log(earthquakeData)
-    }, [earthquakeData])
-    
     return (
         <ul>
             {earthquakeData?.map(quake => (

@@ -5,7 +5,7 @@ export default function Loading() {
     return (
         <div className={styles.container}>
             <img src="snoop.gif" alt="" />
-            <h1>Loading data..</h1>
+            <h1>loading data..</h1>
         </div>
     )
 }

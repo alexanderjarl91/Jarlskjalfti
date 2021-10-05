@@ -8,6 +8,8 @@
   justify-content: center;
   overflow: hidden;
   display: flex;
+  opacity: 1;
+  animation: fadeIn 1s;
 }
 
 .docs {
@@ -39,5 +41,14 @@
   }
   to {
     top: 0px;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }

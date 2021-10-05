@@ -13,7 +13,7 @@ export default function Docs() {
     return (
         <div className={styles.container}>
             <div className={styles.docs}>
-                <h3>Velkomin!</h3>
+                <h3>Velkomin/nn!</h3>
                 <p>Jarðskjálftar eru birtir á korti sem rauðir hringir.
                     Þvermál hringsins merkir stærð á richter en styrkur lits merkir dýpt.
                 </p>

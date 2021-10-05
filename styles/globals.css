@@ -37,3 +37,9 @@ li {
 p {
   margin: 0;
 }
+
+@media (prefers-dark-interface) {
+  body {
+    background-color: black;
+  }
+}

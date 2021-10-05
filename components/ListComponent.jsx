@@ -21,7 +21,7 @@ export default function ListComponent() {
             ))}
 
         </ul>
-        {totalRendered < earthquakeData.length&& <button onClick={addFive} style={{fontWeight: '500', opacity: 0.6, marginBottom: '2rem'}}>see more</button>}
+        {totalRendered < earthquakeData.length&& <button onClick={addFive} style={{fontWeight: '500', opacity: 0.6, marginBottom: '2rem'}}>sjá fleiri</button>}
         </div>
         
      

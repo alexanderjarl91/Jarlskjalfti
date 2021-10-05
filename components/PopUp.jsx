@@ -28,7 +28,7 @@ export default function PopUp() {
                     <p>Dýpt: 0.6</p> 
                     <button className={styles.close} onClick={() => {
                         setActiveQuake()
-                    }}>close</button>
+                    }}>loka</button>
                 </li>
             </ul>
             

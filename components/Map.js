@@ -31,11 +31,6 @@ export default function Map() {
     setMap(null);
   }, []);
 
-  const center = {
-    lat: 64.1334231,
-    lng: -21.9925226,
-  };
-
   return isLoaded && earthquakeData.length > 0 ? (
     <div
       style={{
@@ -58,9 +53,8 @@ export default function Map() {
         }}
       >
         {earthquakeData.map((quake) => (
-          <>
+          <div key={quake.timestamp}>
             <Circle
-              key={quake.timestamp}
               position={{
                 latitude: quake.latitude,
                 longitude: quake.longitude,
@@ -79,7 +73,7 @@ export default function Map() {
                 setActiveQuake(quake);
               }}
             ></Circle>
-          </>
+          </div>
         ))}
         {/* Child components, such as markers, info windows, etc. */}
         <></>

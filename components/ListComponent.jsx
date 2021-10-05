@@ -9,10 +9,10 @@ export default function ListComponent() {
     return (
         <ul>
             {earthquakeData?.map(quake => (
-                <div 
-                    style={{margin: "0 auto", width: '90%', maxWidth: "768px"}}
+                <div key={quake.timestamp} 
+                    style={{margin: "0 auto", width: '90%', maxWidth: "500px"}}
                     onClick={()=> {setMapView(true), setActiveQuake(quake)}}>
-                        <ListItem key={quake.timestamp} timestamp={quake.timestamp} size={quake.size} humanReadableLocation={quake.humanReadableLocation}/>
+                        <ListItem timestamp={quake.timestamp} size={quake.size} humanReadableLocation={quake.humanReadableLocation}/>
                 </div>
             ))}
 

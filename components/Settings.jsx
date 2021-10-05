@@ -5,14 +5,6 @@ import { AppContext } from "../context/context";
 export default function Settings() {
   const {fetchInterval, setFetchInterval, sortSelection, setSortSelection} = useContext(AppContext
     )
-
-    useEffect(()=> {
-      console.log('fetching data now at interval:', fetchInterval )
-    })
-
-    const [highlightedInterval, setHighlightedInterval] = useState(fetchInterval)
-
-
     
     const intervalSelections = [
       {text: '15s', value: 15000},
@@ -51,7 +43,6 @@ export default function Settings() {
             style={selection.text == sortSelection? {color: 'black'} : {color: "lightgrey"}}
             className={styles.active}
             onClick={()=> {
-              console.log(selection.text)
               setSortSelection(selection.text)
               }}>{selection.text}</li>
           ))}

@@ -5,42 +5,60 @@ export const AppContext = React.createContext({});
 
 export const AppContextProvider = ({ children }) => {
   const [showSettings, setShowSettings] = useState(false);
-  const [mapView, setMapView] = useState(true);
+  const [mapView, setMapView] = useState(false);
   const [earthquakeData, setEarthquakeData] = useState([]);
   const [fetchInterval, setFetchInterval] = useState(15000);
-  const [sortSelection, setSortSelection] = useState("Dagsetning");
+  const [sortSelection, setSortSelection] = useState("Richter");
   const [activeQuake, setActiveQuake] = useState();
   const [loadingData, setLoadingData] = useState(true);
   const [showDocs, setShowDocs] = useState(false);
+
+  const url = "https://apis.is/earthquake/is";
+
+  // 1. sækja gögn
+  // 2. sortera eftir sortSelection state
+  // 3. setja sortuð gögn í state
+  // 4. endursortera þegar sortSelection state breytist
+  // 5. setja endursorteruð gögn í state
+
   const fetchData = () => {
-    fetch("https://apis.is/earthquake/is")
+    fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        //sort data before
-        setEarthquakeData(data.results);
+        setEarthquakeData(sortData(data.results));
         setLoadingData(false);
       });
   };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   const sortData = (data) => {
-    if (sortSelection == "Richter") {
-      //sort by date
-      const sorted = data.sort((a, b) => {
-        return a.size < b.size ? -1 : a.date > b.date ? 1 : 0;
-      });
-      return sorted;
-    } else {
-      //data already sorted showing newest first, return
-      return data;
-    }
+    const sorted =
+      sortSelection == "Richter"
+        ? data.sort((a, b) => {
+            return b.size - a.size;
+          })
+        : data.sort((a, b) => {
+            return a.timestamp > b.timestamp
+              ? -1
+              : a.timestamp > b.timestamp
+              ? 1
+              : 0;
+          });
+    return sorted;
   };
 
   useEffect(() => {
-    if (!earthquakeData) return;
-    const sortedBySize = sortData(earthquakeData);
+    if (earthquakeData.length < 1) return;
+    const tempArr = sortData([...earthquakeData]);
+
+    console.log(sortSelection, tempArr[0].size, tempArr[0].timestamp);
+
+    setEarthquakeData(tempArr);
   }, [sortSelection]);
 
-  //
+  //fetch data in intervals
   useInterval(fetchData, fetchInterval);
 
   return (

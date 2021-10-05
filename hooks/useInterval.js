@@ -9,6 +9,7 @@ export function useInterval(callback, delay) {
 
   useEffect(() => {
     const tick = () => {
+      console.log("fetching data");
       savedCallback.current();
     };
     if (delay !== null) {

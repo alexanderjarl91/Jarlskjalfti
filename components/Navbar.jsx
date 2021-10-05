@@ -10,11 +10,12 @@ export default function Navbar() {
 
     return (
         <nav className={styles.navbar} >
-            <button onClick={() => {
+            {!mapView? <button onClick={() => {
                 setShowSettings(!showSettings)
             }}>
                 <img src="settings.svg" alt="" />
-            </button>
+            </button> : null  }
+            
             <Link href="/" >
                 <img src="logo.svg" alt="" style={{cursor: 'pointer'}}/>
             </Link>

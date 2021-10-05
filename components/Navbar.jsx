@@ -20,6 +20,7 @@ export default function Navbar() {
                 <img src={darkMode? "logo_dark.svg" : "logo.svg"} alt="" style={{cursor: 'pointer'}}/>
             </Link>
             <button onClick={() => {
+                setShowSettings(false)
                 setMapView(!mapView)
             }}>
                 <img src={mapView? darkMode? 'list_view_dark.svg' : 'list_view.svg' : darkMode? "map_view_dark.svg" : "map_view.svg"} alt="" />

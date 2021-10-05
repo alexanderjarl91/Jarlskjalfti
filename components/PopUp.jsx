@@ -6,6 +6,8 @@ import { formatDate, formatTime } from '../utils/datestuff'
 export default function PopUp() {
     const {activeQuake, setActiveQuake} = useContext(AppContext)
 
+    const activeDate = formatDate(activeQuake.timestamp)
+    const activeTime = formatTime(activeQuake.timestamp)
 
     return (
         <div className={styles.container}>
@@ -17,15 +19,15 @@ export default function PopUp() {
                 </li>
                 <li className={styles.listItem}>
                     <img src="date_icon.svg" alt="" />
-                    <p>Dagsetning: 0.6</p>
+                    <p>Dagsetning: {activeDate}</p>
                 </li>
                 <li className={styles.listItem}>
                     <img src="time_icon.svg" alt="" />
-                    <p>Tímasetning: 0.6</p>
+                    <p>Tímasetning: {activeTime}</p>
                 </li>
                 <li className={styles.listItem}>
                     <img src="date_icon.svg" alt="" />
-                    <p>Dýpt: 0.6</p> 
+                    <p>Dýpt: {activeQuake.depth}</p> 
                     <button className={styles.close} onClick={() => {
                         setActiveQuake()
                     }}>loka</button>

@@ -63,7 +63,7 @@ export default function Map() {
               options={{
                 strokeColor: "white",
                 strokeOpacity: 0.2,
-                strokeWeight: 3,
+                strokeWeight: 1,
                 fillColor: "#FF0000",
                 fillOpacity: 0.55 * quake.depth,
                 center: { lat: quake.latitude, lng: quake.longitude },

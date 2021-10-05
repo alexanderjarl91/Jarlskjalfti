@@ -1,0 +1,30 @@
+.container {
+  width: 90%;
+  max-width: 768px;
+  margin: 0 auto;
+  height: 260px;
+  background-color: white;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.container > h2 {
+  padding-top: 1rem;
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.intervals__container {
+  all: unset;
+  display: flex;
+  justify-content: center;
+}
+
+.intervals__container > li {
+  padding: 10px;
+  font-weight: 700;
+  color: lightgrey;
+  user-select: none;
+  cursor: pointer;
+}

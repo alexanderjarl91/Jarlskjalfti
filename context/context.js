@@ -13,6 +13,7 @@ export const AppContextProvider = ({ children }) => {
   const [loadingData, setLoadingData] = useState(true);
   const [showDocs, setShowDocs] = useState(false);
   const [totalRendered, setTotalRendered] = useState(5);
+  const [darkMode, setDarkMode] = useState(false);
 
   const url = "https://apis.is/earthquake/is";
 
@@ -31,10 +32,16 @@ export const AppContextProvider = ({ children }) => {
       });
   };
   useEffect(() => {
+    //check if dark mode is preferred
+    let matched = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDarkMode(matched);
+
+    //fetch earthquake data
     fetchData();
   }, []);
 
   const sortData = (data) => {
+    //sort by sortSelection state (timestamp or size)
     const sorted =
       sortSelection == "Richter"
         ? data.sort((a, b) => {
@@ -50,6 +57,7 @@ export const AppContextProvider = ({ children }) => {
     return sorted;
   };
 
+  //sort array every time sortSelection changes
   useEffect(() => {
     if (earthquakeData.length < 1) return;
     const tempArr = sortData([...earthquakeData]);
@@ -78,6 +86,7 @@ export const AppContextProvider = ({ children }) => {
         setShowDocs,
         totalRendered,
         setTotalRendered,
+        darkMode,
       }}
     >
       {children}

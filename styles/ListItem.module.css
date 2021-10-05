@@ -54,3 +54,10 @@
 .icon {
   margin-right: 4px;
 }
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #2b2b2b;
+    color: white;
+  }
+}

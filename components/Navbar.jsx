@@ -4,7 +4,7 @@ import { AppContext } from "../context/context";
 import Link from 'next/link'
 
 export default function Navbar() {
-    const {showSettings, setShowSettings, fetchInterval, setFetchInterval, mapView, setMapView} = useContext(AppContext);
+    const {showSettings, setShowSettings, fetchInterval, setFetchInterval, mapView, setMapView, darkMode} = useContext(AppContext);
 
 
 
@@ -13,16 +13,16 @@ export default function Navbar() {
             {!mapView? <button onClick={() => {
                 setShowSettings(!showSettings)
             }}>
-                <img src="settings.svg" alt="" />
-            </button> : <img style={{opacity: 0.3}}src="settings.svg" alt="" />  }
+                <img src={darkMode? "settings_dark.svg" : "settings.svg"} alt="" />
+            </button> : <img style={{opacity: 0.3}}src={darkMode? "settings_dark.svg" : "settings.svg"} alt="" />  }
             
             <Link href="/" >
-                <img src="logo.svg" alt="" style={{cursor: 'pointer'}}/>
+                <img src={darkMode? "logo_dark.svg" : "logo.svg"} alt="" style={{cursor: 'pointer'}}/>
             </Link>
             <button onClick={() => {
                 setMapView(!mapView)
             }}>
-                <img src={mapView? 'list_view.svg' : "map_view.svg"} alt="" />
+                <img src={mapView? darkMode? 'list_view_dark.svg' : 'list_view.svg' : darkMode? "map_view_dark.svg" : "map_view.svg"} alt="" />
             </button>
         </nav>
     )

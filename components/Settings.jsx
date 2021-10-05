@@ -3,7 +3,7 @@ import styles from "../styles/Settings.module.css";
 import { AppContext } from "../context/context";
 
 export default function Settings() {
-  const {fetchInterval, setFetchInterval, sortSelection, setSortSelection} = useContext(AppContext
+  const {fetchInterval, setFetchInterval, sortSelection, setSortSelection, darkMode} = useContext(AppContext
     )
     
     const intervalSelections = [

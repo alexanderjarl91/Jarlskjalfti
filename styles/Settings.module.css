@@ -28,3 +28,10 @@
   user-select: none;
   cursor: pointer;
 }
+
+@media (prefers-color-scheme: dark) {
+  .container {
+    background-color: #2b2b2b;
+    color: white;
+  }
+}

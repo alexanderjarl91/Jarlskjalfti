@@ -43,11 +43,12 @@ export default function Map() {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={{ lat: 64.773887, lng: -18.824735 }}
-        zoom={5}
+        zoom={6}
         onLoad={onLoad}
         onUnmount={onUnmount}
         options={{
-          // minZoom: 12,
+          minZoom: 6,
+          maxZoom: 9,
           disableDefaultUI: true,
           styles: exampleMapStyles,
         }}
@@ -81,7 +82,11 @@ export default function Map() {
       {activeQuake && <PopUp title={activeQuake.humanReadableLocation} />}
 
       <button
-        style={{ marginTop: "1rem", fontWeight: "500" }}
+        style={{
+          margin: "1rem auto",
+          fontWeight: "500",
+          maxWidth: "80px",
+        }}
         onClick={() => {
           setShowDocs(!showDocs);
         }}

@@ -1,3 +1,4 @@
+import React from "react";
 import "../styles/globals.css";
 import { AppContextProvider } from "../context/context";
 import Navbar from "../components/Navbar";

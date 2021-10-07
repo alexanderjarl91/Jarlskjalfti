@@ -14,9 +14,10 @@ import Docs from "./Docs";
 export default function Map() {
   const { earthquakeData, activeQuake, setActiveQuake, showDocs, setShowDocs } =
     useContext(AppContext);
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
+    googleMapsApiKey: "AIzaSyBvq24ToUr3NpA30UNZq-INvYhgE9b4KbY",
   });
 
   const [map, setMap] = useState(null);
@@ -48,7 +49,7 @@ export default function Map() {
         onUnmount={onUnmount}
         options={{
           minZoom: 6,
-          maxZoom: 9,
+          maxZoom: 20,
           disableDefaultUI: true,
           styles: exampleMapStyles,
         }}

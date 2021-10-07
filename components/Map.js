@@ -59,7 +59,7 @@ export default function Map() {
                 latitude: quake.latitude,
                 longitude: quake.longitude,
               }}
-              radius={quake.size * 50}
+              radius={quake.size * 500}
               options={{
                 strokeColor: "white",
                 strokeOpacity: 0.2,

@@ -4,18 +4,20 @@ import { AppContext } from '../context/context'
 
 
 export default function ListComponent() {
-    const {earthquakeData, mapView, setMapView, setActiveQuake, totalRendered, setTotalRendered} = useContext(AppContext)
+    const {earthquakeData, mapView, setMapView, setActiveQuake, totalRendered, setTotalRendered, setShowSettings, showSettings} = useContext(AppContext)
 
+    //add 5 to totalRendered state to show 5 more listings
     const addFive = () => {
         setTotalRendered(totalRendered + 5)
     }
+
     return (
         <div style={{textAlign: 'center'}}>
         <ul>
             {earthquakeData?.slice(0, totalRendered).map(quake => (
                 <div key={quake.timestamp} 
                     style={{margin: "0 auto", width: '90%', maxWidth: "500px"}}
-                    onClick={()=> {setMapView(true), setActiveQuake(quake)}}>
+                    onClick={()=> {setMapView(true), setActiveQuake(quake), showSettings&& setShowSettings(false) }}>
                         <ListItem timestamp={quake.timestamp} size={quake.size} humanReadableLocation={quake.humanReadableLocation}/>
                 </div>
             ))}

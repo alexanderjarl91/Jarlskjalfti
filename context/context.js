@@ -15,14 +15,16 @@ export const AppContextProvider = ({ children }) => {
   const [totalRendered, setTotalRendered] = useState(5);
   const [darkMode, setDarkMode] = useState(false);
 
+  //on mount, check if dark is preferred & fetch data
+  useEffect(() => {
+    let matched = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setDarkMode(matched);
+    //fetch earthquake data
+    fetchData();
+  }, []);
+
+  //function to fetch data & handle loading state
   const url = "https://apis.is/earthquake/is";
-
-  // 1. sækja gögn
-  // 2. sortera eftir sortSelection state
-  // 3. setja sortuð gögn í state
-  // 4. endursortera þegar sortSelection state breytist
-  // 5. setja endursorteruð gögn í state
-
   const fetchData = () => {
     fetch(url)
       .then((response) => response.json())
@@ -31,15 +33,8 @@ export const AppContextProvider = ({ children }) => {
         setLoadingData(false);
       });
   };
-  useEffect(() => {
-    //check if dark mode is preferred
-    let matched = window.matchMedia("(prefers-color-scheme: dark)").matches;
-    setDarkMode(matched);
 
-    //fetch earthquake data
-    fetchData();
-  }, []);
-
+  //function that takes in data and sorts it by Richter or timestamp
   const sortData = (data) => {
     //sort by sortSelection state (timestamp or size)
     const sorted =

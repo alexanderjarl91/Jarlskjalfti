@@ -14,7 +14,7 @@ export default function PopUp() {
             <h1>{activeQuake.humanReadableLocation}</h1>
             <ul>
                 <li className={styles.listItem}>
-                    <img src="date_icon.svg" alt="" />
+                    <img src="richter.svg" alt="" />
                     <p>Stærð á richter: {activeQuake.size}</p>
                 </li>
                 <li className={styles.listItem}>
@@ -26,7 +26,7 @@ export default function PopUp() {
                     <p>Tímasetning: {activeTime}</p>
                 </li>
                 <li className={styles.listItem}>
-                    <img src="date_icon.svg" alt="" />
+                    <img src="depth.svg" alt="" />
                     <p>Dýpt: {activeQuake.depth}</p> 
                     <button className={styles.close} onClick={() => {
                         setActiveQuake()

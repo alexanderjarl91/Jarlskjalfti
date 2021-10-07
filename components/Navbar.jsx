@@ -6,8 +6,6 @@ import Link from 'next/link'
 export default function Navbar() {
     const {showSettings, setShowSettings, fetchInterval, setFetchInterval, mapView, setMapView, darkMode} = useContext(AppContext);
 
-
-
     return (
         <nav className={styles.navbar} >
             {!mapView? <button onClick={() => {

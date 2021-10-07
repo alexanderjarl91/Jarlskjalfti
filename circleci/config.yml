@@ -9,26 +9,13 @@ orbs:
 # Invoke jobs via workflows
 # See: https://circleci.com/docs/2.0/configuration-reference/#workflows
 workflows:
-  build_and_test:
+  sample:
+    # Inside the workflow, you define the jobs you want to run.
     jobs:
-      build:
-        working_directory: ~/repo
-        docker:
-          - image: circleci/node:10.16.3
-        steps:
-          - checkout
-          - run:
-              name: Update NPM
-              command: "sudo npm install -g npm@5"
-          - restore_cache:
-              key: dependency-cache-{{ checksum "package-lock.json" }}
-          - run:
-              name: Install Dependencies
-              command: npm install
-          - save_cache:
-              key: dependency-cache-{{ checksum "package-lock.json" }}
-              paths:
-                - ./node_modules
-          - run:
-              name: Run tests
-              command: npm run test
+      - node/test:
+          # This is the node version to use for the `cimg/node` tag
+          # Relevant tags can be found on the CircleCI Developer Hub
+          # https://circleci.com/developer/images/image/cimg/node
+          version: "16.10"
+          # If you are using yarn, change the line below from "npm" to "yarn"
+          pkg-manager: npm

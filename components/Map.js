@@ -16,7 +16,7 @@ export default function Map() {
     useContext(AppContext);
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: "AIzaSyBvq24ToUr3NpA30UNZq-INvYhgE9b4KbY",
+    googleMapsApiKey: process.env.NEXT_PUBLIC_GOOGLE_API_KEY,
   });
 
   const [map, setMap] = useState(null);
